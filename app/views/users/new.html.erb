@@ -1,0 +1,29 @@
+<h1>Sign Up</h1>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<div class="Sign_Form">
+
+  <% if @user.errors.any? %>
+  <div id='error_explanation'>
+    <h2>아래와 같은 에러가 발생했습니다.</h2>
+    <ul>
+    <% for message_error in @user.errors.full_messages %>
+      <li><%= message_error %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= form_for(:user, :url => sign_up_path ) do |f| %>
+    <p> Username: <%= f.text_field :username%> </p>
+    <p> Email: <%= f.text_field :email%> </p>
+    <p> Password: <%= f.password_field :password%></p>
+    <p> Password Confirmation: <%= f.password_field :password_confirmation%> </p>
+    <%= f.submit :Signup %>
+  <% end %>
+
+
+</div>
